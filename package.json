@@ -1,0 +1,36 @@
+{
+  "name": "dating_app_mern",
+  "version": "1.0.0",
+  "description": "A dating app, made in MERN",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Tony Hajdini",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-compile-sass": "^4.0.0",
+    "express-flash-messages": "^0.1.1",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.2.0",
+    "mongoose": "^5.0.12",
+    "node-sass": "^4.9.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.3",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
