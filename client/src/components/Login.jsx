@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Input, Icon, Button } from 'react-materialize';
-import { something } from '../styles/App.css';
 import App from '../styles/App.css';
 
 const Login = () => {
