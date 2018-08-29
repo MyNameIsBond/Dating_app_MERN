@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cross-fetch": "^2.2.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-materialize": "^2.4.3",
     "react-redux": "^5.0.7",
+    "react-redux-loading-bar": "^4.0.5",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^1.1.4",
     "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -19,5 +22,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://127.0.0.1:8080/"
+  "proxy": "http://127.0.0.1:8080"
 }

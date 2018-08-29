@@ -6,9 +6,9 @@ import {
   GraphQLList,
   GraphQLInt,
   GraphQLBoolean
-} from 'graphql/type';
+} from 'graphql/type'
 
-import User from '../models/User';
+import User from '../models/User'
 
 var todoType = new GraphQLObjectType({
   name: 'todo',
@@ -27,4 +27,4 @@ var todoType = new GraphQLObjectType({
       description: 'Completed todo? '
     }
   })
-});
+})

@@ -8,8 +8,8 @@
   --shadow-color: rgba(0, 0, 0, 0.4);
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   /* Box shdadow for pop up menus */
-  --box-shadow-Menus: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
-    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+  --box-shadow-Menus: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
+    0 8px 10px -5px rgba(0, 0, 0, 0.4);
   /* --hover-color:; */
 }
 
@@ -35,8 +35,9 @@ nav > div > div > ul > li > a:hover {
 .login_style {
   background-color: var(--nav-bg-color);
   box-shadow: var(--box-shadow);
-  margin: 10px auto;
-  padding: 50px;
+  margin: 100px auto;
+  padding: 80px;
+  width: 40%;
 }
 
 .login_style button {
@@ -64,5 +65,33 @@ nav > div > div > ul > li > a:hover {
   padding: 10px 0px;
   height: 600px;
   width: 100%;
-  background-color: rgba(194, 182, 182, 0.829);
+}
+/* Login Forms */
+/* Error Message */
+.error_div {
+  border: solid rgb(163, 102, 102) 1px;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  background-color: rgb(224, 140, 140);
+  padding: 10px auto;
+  margin: 10px auto;
+}
+
+.error_div i {
+  padding: 0px auto;
+  margin: 10px;
+  color: rgb(163, 53, 53);
+}
+
+.error_div span {
+  margin: auto;
+  position: relative;
+  color: rgb(163, 53, 53);
+  bottom: 5px;
+  font-weight: bold;
+}
+
+.login_header {
+  background-color: red;
+  position: relative;
 }

@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect
-} from 'react-router-dom';
-import './styles/App.css';
-import Blog from './components/Blog.jsx';
-import Home from './components/Home.jsx';
-import Messages from './components/Messages.jsx';
-import Register from './components/Register';
-import Navigation from './components/Nav_bar.jsx';
-import Login from './components/Login.jsx';
-import { Provider } from 'react-redux';
-
-import store from './store';
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom'
+import './styles/App.css'
+import Blog from './components/Blog.jsx'
+import Home from './components/Home.jsx'
+import Messages from './components/Messages.jsx'
+import Register from './components/Register'
+import Navigation from './components/Nav_bar.jsx'
+import Login from './components/Login.jsx'
+import { Provider } from 'react-redux'
+import store from './store'
+import Header from './components/loading_bar.jsx'
 
 export default class App extends Component {
   render() {
@@ -24,6 +18,8 @@ export default class App extends Component {
         <Router>
           <div>
             <Navigation component={Navigation} />
+            <Header />
+
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/messages" component={Messages} />
@@ -34,6 +30,6 @@ export default class App extends Component {
           </div>
         </Router>
       </Provider>
-    );
+    )
   }
 }
