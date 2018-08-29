@@ -36,12 +36,22 @@ nav > div > div > ul > li > a:hover {
   background-color: var(--nav-bg-color);
   box-shadow: var(--box-shadow);
   margin: 100px auto;
-  padding: 80px;
+  padding: 0px;
   width: 40%;
+}
+.login_style h4 {
+  padding: 40px;
+  background-color: #26a69a;
+  color: #fff;
+  font-size: 5em;
+}
+.login_inner {
+  padding: 80px;
 }
 
 .login_style button {
-  width: 100%;
+  width: 40%;
+  height: 50px;
 }
 
 .test {

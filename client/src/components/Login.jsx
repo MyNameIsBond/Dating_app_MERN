@@ -38,16 +38,18 @@ const SyncValidationForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <div className="container login_style" style={App.something}>
-      <form onSubmit={handleSubmit}>
-        <Icon>mail</Icon>
-        <Field name="email" type="email" component={renderField} label="Email" />
-
-        <Icon>lock</Icon>
-        <Field name="password" type="password" component={renderField} label="Password" />
-        <button type="submit" className="waves-effect waves-light btn" disabled={submitting}>
-          Submit
-        </button>
-      </form>
+      <h4>LOGIN</h4>
+      <div className="login_inner">
+        <form onSubmit={handleSubmit}>
+          <Icon>mail</Icon>
+          <Field name="email" type="email" component={renderField} label="Email" />
+          <Icon>lock</Icon>
+          <Field name="password" type="password" component={renderField} label="Password" />
+          <button type="submit" className="waves-effect waves-light btn" disabled={submitting}>
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
