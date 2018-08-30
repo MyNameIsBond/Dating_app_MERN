@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const Messages = () => {
-  return (
-    <div>
-      <div className="grid">Messages</div>
-    </div>
-  );
-};
+const Chat_Grid = () => <div id="chat-grid">chat grid</div>
+const 
 
-export default Messages;
+
+const Messages = () => (
+  <div className="messages-grid">
+    <Chat_Grid />
+  </div>
+)
+
+export default Messages

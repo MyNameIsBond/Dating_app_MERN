@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchUsers } from '../actions/user_action';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchUsers } from '../actions/user_action'
+import PropTypes from 'prop-types'
 class Home extends Component {
   componentWillMount() {
-    this.props.fetchUsers();
+    this.props.fetchUsers()
   }
 
   render() {
@@ -15,21 +15,21 @@ class Home extends Component {
         <small>{user.gender}</small>
         <hr />
       </div>
-    ));
-    return <div>{loopUsers}</div>;
+    ))
+    return <div>{loopUsers}</div>
   }
 }
 
 Home.propTypes = {
   fetchUsers: PropTypes.func.isRequired,
   users: PropTypes.array.isRequired
-};
+}
 
 const mapStateToProps = state => ({
   users: state.users.items
-});
+})
 
 export default connect(
   mapStateToProps,
   { fetchUsers }
-)(Home);
+)(Home)

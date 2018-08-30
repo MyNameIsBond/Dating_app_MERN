@@ -105,3 +105,14 @@ nav > div > div > ul > li > a:hover {
   background-color: red;
   position: relative;
 }
+
+#register-link {
+  float: right;
+  margin: -35px auto;
+  margin-right: 50%;
+}
+#register-link:hover {
+  text-decoration: underline;
+}
+
+/*  Messages */
