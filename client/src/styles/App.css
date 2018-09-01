@@ -8,8 +8,8 @@
   --shadow-color: rgba(0, 0, 0, 0.4);
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   /* Box shdadow for pop up menus */
-  --box-shadow-Menus: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
-    0 8px 10px -5px rgba(0, 0, 0, 0.4);
+  --box-shadow-Menus: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
   /* --hover-color:; */
 }
 
@@ -115,4 +115,35 @@ nav > div > div > ul > li > a:hover {
   text-decoration: underline;
 }
 
-/*  Messages */
+/********************  Messages ******************/
+
+.messages-grid {
+  background-color: crimson;
+  height: 100%;
+  width: 100%;
+  display: grid;
+
+  grid-auto-columns: 25%;
+}
+
+#message-fields {
+  background-color: #26a69a;
+  grid-column: 1;
+}
+
+#message-infos {
+  grid-column: 4;
+  background-color: hotpink;
+}
+
+#message-input {
+  height: 100px;
+  width: 100px;
+  background-color: burlywood;
+}
+
+#message-search {
+  height: 100px;
+  width: 100px;
+  background-color: darkviolet;
+}
