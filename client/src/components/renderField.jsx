@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from 'react-materialize'
 
-export const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+export const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
     <label>{label}</label>
     <div>
@@ -13,7 +13,7 @@ export const renderField = ({ input, label, type, meta: { touched, error, warnin
             <span>{error}</span>
           </div>
         )) ||
-          (warning && <span>{warning}</span>))}
+          (error && <span>{error}</span>))}
     </div>
   </div>
 )

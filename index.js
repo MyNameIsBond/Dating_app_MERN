@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 app.get('/users', (req, res, next) => {
   User.find({}, (err, users) => {
     if (err) throw err
-    return res.send(users)
+    return res.send(users).status(401)
   })
 })
 

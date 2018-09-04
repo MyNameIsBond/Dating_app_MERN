@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUsers } from '../actions/user_action'
 import PropTypes from 'prop-types'
+
 class Home extends Component {
   componentWillMount() {
     this.props.fetchUsers()
