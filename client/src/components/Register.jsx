@@ -4,6 +4,7 @@ import { isNotEmail } from 'sane-email-validation'
 import { Row, Input, Icon, Button } from 'react-materialize'
 import { renderField } from './renderField'
 import { Link } from 'react-router-dom'
+import { registerAction } from '../actions/registerAction'
 
 const Ad_card = () => {
   return (
@@ -82,16 +83,31 @@ const Regiser = props => {
       <div className="container login_style">
         <h4>REGISTER</h4>
         <div className="login_inner">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(registerAction)}>
             <Icon>person</Icon>
 
-            <Field name="username" type="text" component={renderField} label="Username" />
+            <Field
+              name="username"
+              type="text"
+              component={renderField}
+              label="Username"
+            />
             <Icon>mail</Icon>
 
-            <Field name="email" type="email" component={renderField} label="Email" />
+            <Field
+              name="email"
+              type="email"
+              component={renderField}
+              label="Email"
+            />
             <Icon>lock</Icon>
 
-            <Field name="password" type="password" component={renderField} label="password" />
+            <Field
+              name="password"
+              type="password"
+              component={renderField}
+              label="password"
+            />
             <Icon>lock</Icon>
 
             <Field
@@ -100,7 +116,11 @@ const Regiser = props => {
               component={renderField}
               label="Repeat Password"
             />
-            <button className="waves-effect waves-light btn" type="submit" disabled={submitting}>
+            <button
+              className="waves-effect waves-light btn"
+              type="submit"
+              disabled={submitting}
+            >
               Register
             </button>
           </form>

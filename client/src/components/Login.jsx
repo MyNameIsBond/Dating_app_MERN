@@ -5,7 +5,7 @@ import { Icon } from 'react-materialize'
 import { isNotEmail } from 'sane-email-validation'
 import { renderField } from './renderField.jsx'
 import { Link } from 'react-router-dom'
-import signInAction from '../actions/user_authentication'
+import { signInAction } from '../actions/user_authentication'
 
 const validate = values => {
   const errors = {}
@@ -27,10 +27,24 @@ const SyncValidationForm = props => {
       <div className="login_inner">
         <form onSubmit={handleSubmit(signInAction)}>
           <Icon>mail</Icon>
-          <Field name="email" type="email" component={renderField} label="Email" />
+          <Field
+            name="email"
+            type="email"
+            component={renderField}
+            label="Email"
+          />
           <Icon>lock</Icon>
-          <Field name="password" type="password" component={renderField} label="Password" />
-          <button type="submit" className="waves-effect waves-light btn" disabled={submitting}>
+          <Field
+            name="password"
+            type="password"
+            component={renderField}
+            label="Password"
+          />
+          <button
+            type="submit"
+            className="waves-effect waves-light btn"
+            disabled={submitting}
+          >
             Login
           </button>
         </form>

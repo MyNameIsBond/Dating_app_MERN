@@ -1,17 +1,9 @@
 import { SubmissionError } from 'redux-form'
 import setAuthorizationToken from '../utils/setAuthorizationToken'
 import jwt from 'jsonwebtoken'
-import { SET_CURRENT_USER } from './types'
-import { Button, Icon } from 'react-materialize'
+import { setCurrentUser } from '../actions/user_authentication'
 
-export const setCurrentUser = user => {
-  return {
-    type: SET_CURRENT_USER,
-    user
-  }
-}
-
-export const signInAction = async (values, dispatch, props) => {
+export const registerAction = async (values, dispatch, props) => {
   const settings = {
     method: 'post',
     body: JSON.stringify({ values }),
@@ -20,17 +12,20 @@ export const signInAction = async (values, dispatch, props) => {
     }
   }
   try {
-    const res = await fetch('/login', settings)
+    const res = await fetch('/login/register', settings)
     const json = await res.json()
     if (json.error) {
       console.log(json.error)
-      throw json.error
+      const suberror = new Array()
+      const { param, msg } = json.error
+      suberror[`${param}`] = msg
+      throw suberror
     }
     localStorage.setItem('token', json.token)
     setAuthorizationToken(json.token)
     dispatch(setCurrentUser(jwt.decode(json.token)))
     props.history.push('/')
-    window.Materialize.toast(` you just logged in.`, 10000)
+    window.Materialize.toast('Your accound was created.', 10000)
   } catch (error) {
     throw new SubmissionError(error)
   }

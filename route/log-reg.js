@@ -1,28 +1,110 @@
-var express = require('express')
-var router = express.Router()
-const path = require('path')
-var jwt = require('jsonwebtoken')
+const express = require('express')
+const router = express.Router()
+const passport = require('passport')
+const User = require('../models/User')
+const jwt = require('jsonwebtoken')
+const JwtStrategy = require('passport-jwt').Strategy
+const ExtractJwt = require('passport-jwt').ExtractJwt
+const bodyParser = require('body-parser')
+
+var opts = {}
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
+opts.secretOrKey = 'secret'
+passport.use(
+  new JwtStrategy(opts, (jwt_payload, done) => {
+    User.findOne({ id: jwt_payload.sub }, (err, user) => {
+      if (err) {
+        return done(err, false)
+      }
+      if (user) {
+        return done(null, user)
+      } else {
+        return done(null, false)
+        // or you could create a new account
+      }
+    })
+  })
+)
 
 //  URL www.dateme.com/login
 
-router.post('/register', (req, res) => {})
-router.post('/signin', (req, res) => {
-  user = { email: 'Nick@hotmail.com', username: 'Nick_The_Greek' }
-  jwt.sign({ user: user }, 'secretkey', (err, token) => {
-    return res.send(user)
-  })
-})
+// Register a User.
 
-const verifyToken = (req, res, next) => {
-  const bearerHeader = req.headers['authorization']
-  if (typeof bearerHeader !== 'undefined') {
-    const bearer = bearerHeader.split(' ')
-    const bearToken = bearer[1]
-    req.token = bearToken
-    next()
-  } else {
-    res.sendStatus(403)
+router.post('/register', async (req, res) => {
+  req.body = req.body.values
+  const { email, password, password2, username } = req.body
+  let user = new User()
+  console.log(req.body)
+  user.username = username
+  user.email = email
+  user.password = password
+  // check
+  req.checkBody('email', 'This is not a valid e mail').isEmail()
+  req
+    .checkBody('username', 'your username should be more than 6 characters')
+    .isLength({
+      min: 3
+    })
+  req
+    .checkBody('password', 'The password should be more than 8 characters')
+    .isLength({
+      min: 8
+    })
+  req
+    .checkBody('password2', 'Passwords do not not match')
+    .equals(req.body.password)
+  let errors = req.validationErrors()
+  if (errors) {
+    errors.json(
+    const { param, msg } = errors
+    console.log(param)
+    return res.send({ errors })
   }
-}
+  try {
+    const if_email = await User.find({ email })
+    if (if_email[0]) {
+      return res.json({
+        error: {
+          param: 'email',
+          msg: 'This Email is already in use.'
+        }
+      })
+    }
+    const reg_user = await user.save()
+    const payload = { id: reg_user.id }
+    const token = jwt.sign(payload, opts.secretOrKey)
+    res.json({ message: 'ok', token })
+  } catch (error) {
+    if (err.name === 'MongoError' && err.code === 11000) {
+    }
+  }
+})
+// Login Strategy.
+
+router.post('/', (req, res) => {
+  const { email, password } = req.body.values
+  User.findOne(
+    {
+      email: email
+    },
+    (err, user) => {
+      if (err) throw err
+      if (!user) {
+        console.log('Login fails')
+        res.json({ error: { email: 'check out the email' } })
+      }
+      User.comparePassword(password, user.password, (err, isMatch) => {
+        if (err) throw err
+        if (isMatch) {
+          const payload = { id: user.id }
+          const token = jwt.sign(payload, opts.secretOrKey)
+          res.json({ message: 'ok', token })
+        } else {
+          res.json({ error: { password: 'wrong pass mate.' } })
+        }
+      })
+    }
+  )
+})
 
 module.exports = router
