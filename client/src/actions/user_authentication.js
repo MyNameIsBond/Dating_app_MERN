@@ -3,6 +3,7 @@ import setAuthorizationToken from '../utils/setAuthorizationToken'
 import jwt from 'jsonwebtoken'
 import { SET_CURRENT_USER } from './types'
 import { Button, Icon } from 'react-materialize'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 export const setCurrentUser = user => {
   return {
@@ -10,8 +11,13 @@ export const setCurrentUser = user => {
     user
   }
 }
-
+export const logout = () => dispatch => {
+  localStorage.removeItem('token')
+  setAuthorizationToken(false)
+  dispatch(setCurrentUser({}))
+}
 export const signInAction = async (values, dispatch, props) => {
+  dispatch(showLoading())
   const settings = {
     method: 'post',
     body: JSON.stringify({ values }),
@@ -30,6 +36,7 @@ export const signInAction = async (values, dispatch, props) => {
     setAuthorizationToken(json.token)
     dispatch(setCurrentUser(jwt.decode(json.token)))
     props.history.push('/')
+    dispatch(hideLoading())
     window.Materialize.toast(` you just logged in.`, 10000)
   } catch (error) {
     throw new SubmissionError(error)

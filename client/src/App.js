@@ -16,6 +16,7 @@ import Login from './components/Login.jsx'
 import { Provider } from 'react-redux'
 import store from './store'
 import Header from './components/loading_bar.jsx'
+import LoadingBar from 'react-redux-loading-bar'
 
 export default class App extends Component {
   render() {
@@ -24,8 +25,8 @@ export default class App extends Component {
         <Router>
           <div>
             <Navigation component={Navigation} />
+            <LoadingBar showFastActions />
             <Header />
-
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/messages" component={Messages} />

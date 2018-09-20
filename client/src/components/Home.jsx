@@ -7,13 +7,13 @@ class Home extends Component {
   componentWillMount() {
     this.props.fetchUsers()
   }
-
   render() {
     const loopUsers = this.props.users.map(user => (
       <div>
         <strong>{user.username}</strong>
         <p>{user.email}</p>
         <small>{user.gender}</small>
+        <p />
         <hr />
       </div>
     ))

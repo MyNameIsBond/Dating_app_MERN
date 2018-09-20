@@ -5,7 +5,6 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
-const bodyParser = require('body-parser')
 
 var opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
@@ -34,7 +33,6 @@ router.post('/register', async (req, res) => {
   req.body = req.body.values
   const { email, password, password2, username } = req.body
   let user = new User()
-  console.log(req.body)
   user.username = username
   user.email = email
   user.password = password
@@ -55,19 +53,21 @@ router.post('/register', async (req, res) => {
     .equals(req.body.password)
   let errors = req.validationErrors()
   if (errors) {
-    errors.json(
+    regError = {}
     const { param, msg } = errors
-    console.log(param)
-    return res.send({ errors })
+    errors.forEach(key => {
+      const { msg, param } = key
+      regError[`${param}`] = msg
+    })
+    return res.json({ error: { regError } })
   }
   try {
     const if_email = await User.find({ email })
     if (if_email[0]) {
+      regError = {}
+      regError['email'] = 'This Email is already in use'
       return res.json({
-        error: {
-          param: 'email',
-          msg: 'This Email is already in use.'
-        }
+        error: { regError }
       })
     }
     const reg_user = await user.save()
@@ -76,6 +76,7 @@ router.post('/register', async (req, res) => {
     res.json({ message: 'ok', token })
   } catch (error) {
     if (err.name === 'MongoError' && err.code === 11000) {
+      throw error
     }
   }
 })
@@ -83,6 +84,9 @@ router.post('/register', async (req, res) => {
 
 router.post('/', (req, res) => {
   const { email, password } = req.body.values
+  if (password === null) {
+    res.json({ error: { password: 'email or password is wrong' } })
+  }
   User.findOne(
     {
       email: email
@@ -90,8 +94,7 @@ router.post('/', (req, res) => {
     (err, user) => {
       if (err) throw err
       if (!user) {
-        console.log('Login fails')
-        res.json({ error: { email: 'check out the email' } })
+        res.json({ error: { password: 'email or password is wrong' } })
       }
       User.comparePassword(password, user.password, (err, isMatch) => {
         if (err) throw err
@@ -100,7 +103,7 @@ router.post('/', (req, res) => {
           const token = jwt.sign(payload, opts.secretOrKey)
           res.json({ message: 'ok', token })
         } else {
-          res.json({ error: { password: 'wrong pass mate.' } })
+          res.json({ error: { password: 'email or password is wrong' } })
         }
       })
     }

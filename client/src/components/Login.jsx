@@ -23,7 +23,7 @@ const SyncValidationForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <div className="container login_style" style={App.something}>
-      <h4>LOGIN</h4>
+      <h4>SIGN IN</h4>
       <div className="login_inner">
         <form onSubmit={handleSubmit(signInAction)}>
           <Icon>mail</Icon>

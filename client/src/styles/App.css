@@ -8,11 +8,39 @@
   --shadow-color: rgba(0, 0, 0, 0.4);
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   /* Box shdadow for pop up menus */
-  --box-shadow-Menus: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
-    0 8px 10px -5px rgba(0, 0, 0, 0.4);
+  --box-shadow-Menus: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
   /* --hover-color:; */
+  --lightgray-border: rgb(224, 224, 224);
+  --lighttext: rgb(173, 169, 169);
+}
+/*scrolling bar*/
+
+::-webkit-scrollbar {
+  width: 4px;
 }
 
+/* Track */
+
+::-webkit-scrollbar-track {
+  box-shadow: var(--box-shadow);
+  border-radius: 0px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: var(--decoration-color);
+  border-radius: 0px;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8a4949;
+}
+
+/* Navigation Bar */
 nav {
   background-color: var(--nav-bg-color);
 }
@@ -26,8 +54,10 @@ body {
 i {
   color: var(--decoration-color);
 }
-
-nav > div > div > ul > li > a:hover {
+nav .brand-logo {
+  color: var(--decoration-color);
+}
+nav > div > div > ul > li > a > li > a:hover {
   background-color: var(--nav-bg-color);
   cursor: default;
 }
@@ -54,8 +84,9 @@ nav > div > div > ul > li > a:hover {
   height: 50px;
 }
 
-.test {
-  left: 5px;
+.toast {
+  background-color: var(--nav-bg-color);
+  color: var(--text-color-);
 }
 
 .other_logins button {
@@ -65,6 +96,10 @@ nav > div > div > ul > li > a:hover {
 .other_logins p {
   align-self: center;
   align-items: center;
+}
+
+.logreg {
+  color: var(--decoration-color);
 }
 
 /* Register */
@@ -116,34 +151,270 @@ nav > div > div > ul > li > a:hover {
 }
 
 /********************  Messages ******************/
-
 .messages-grid {
-  background-color: crimson;
-  height: 100%;
-  width: 100%;
+  background-color: var(--nav-bg-color);
   display: grid;
-
-  grid-auto-columns: 25%;
+  grid-auto-columns: 25vw;
+  /* Try to find a way for the grid to cover 100% */
+  grid-auto-rows: 25vw;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
 }
 
 #message-fields {
-  background-color: #26a69a;
-  grid-column: 1;
+  background-color: var(--bg-color);
+  grid-column: span 2;
+  grid-row: span 3;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 5%);
 }
 
 #message-infos {
   grid-column: 4;
-  background-color: hotpink;
+  grid-row: span 3;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: var(--lightgray-border);
+  background-color: var(--nav-bg-color);
+  display: grid;
+  grid-template-rows: 5% 5% 90%;
+  overflow-y: auto;
+}
+.user-info-photos {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: repeat(auto-fill, 12%);
+  grid-gap: 4px;
 }
 
-#message-input {
-  height: 100px;
-  width: 100px;
-  background-color: burlywood;
+.user-info-photos img {
+  cursor: pointer;
+  justify-self: stretch;
+  background-color: black;
+  width: 100%;
+  max-height: 100%;
 }
 
+.user-info-card {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  border-bottom-color: var(--lightgray-border);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+.user-info-card > img {
+  align-self: center;
+  height: 40px;
+  justify-self: center;
+  border: solid 1px var(--lightgray-border);
+  border-radius: 50%;
+}
+.user-info-card p {
+  font-size: 2ch;
+  justify-self: start;
+  align-self: center;
+}
+
+#message-infos > i {
+  color: var(--lighttext);
+  align-self: center;
+  justify-self: center;
+}
+.user-info-card i {
+  align-self: center;
+  color: var(--lighttext);
+  cursor: pointer;
+}
+.user-info-card i:hover {
+  color: var(--decoration-color);
+}
+
+.message-input {
+  border-top-color: var(--lightgray-border);
+  border-top-style: solid;
+  border-top-width: 1px;
+  background-color: var(--nav-bg-color);
+  grid-row: 13;
+  display: grid;
+  position: relative;
+}
+.message-input input {
+  width: 67%;
+  place-self: center;
+  height: 50%;
+  border: 1px solid var(--lightgray-border);
+  border-radius: 20px;
+  padding: 0px 75px;
+}
+.message-input i:hover {
+  color: var(--decoration-color);
+}
+.message-input i {
+  position: absolute;
+  color: var(--lighttext);
+  cursor: pointer;
+}
+.message-input .photo-gif {
+  left: 95px;
+  top: 12px;
+}
+.message-input .photo-mood {
+  left: 120px;
+  top: 12px;
+}
+.message-input .photo-pic {
+  right: 130px;
+  top: 12px;
+}
+.message-input .photo-send {
+  color: var(--decoration-color);
+  right: 100px;
+  top: 12px;
+}
+/* Search Through messanger. ( people you have messaged) */
 #message-search {
-  height: 100px;
-  width: 100px;
-  background-color: darkviolet;
+  grid-column: span 3;
+  align-self: stretch;
+  background-color: red;
+  background-color: var(--nav-bg-color);
+  grid-template-rows: 50% 50%;
+  position: relative;
+  border-bottom-style: solid;
+  border-bottom-color: var(--lightgray-border);
+  border-bottom-width: 1px;
+  justify-self: stretch;
+}
+#message-search input:focus {
+  border: var(--decoration-color) 1px solid;
+}
+#message-search input {
+  padding-left: 10%;
+
+  margin: 25px;
+  width: 80%;
+  height: 50%;
+  border: solid var(--lightgray-border) 1px;
+  border-radius: 20px;
+}
+#message-search i {
+  position: absolute;
+  top: 38px;
+  left: 38px;
+  color: var(--lighttext);
+}
+
+.ms_user img {
+  height: 40px;
+}
+
+/* User Info on the chat-grid */
+.user-info i:hover {
+  color: var(--decoration-color);
+  cursor: pointer;
+}
+.user-info i {
+  color: var(--lighttext);
+}
+.user-info {
+  display: grid;
+  grid-column: span 3;
+  grid-template-columns: 25% 50% 25%;
+}
+.user-info img {
+  height: 50px;
+  grid-column: 1;
+  place-self: center;
+  border: solid var(--lightgray-border) 1px;
+  border-radius: 50%;
+}
+.user-info .user-info-div {
+  justify-self: start;
+  align-self: center;
+}
+.user-info div p {
+  margin: 0px;
+}
+.user-info div .user-info-name {
+  grid-column: 2;
+  font-size: 2.4ch;
+  margin: 0px;
+}
+.user-info-email {
+  color: var(--lighttext);
+}
+.user-info .user-info-buttons {
+  grid-column: 3;
+  place-self: center;
+}
+
+/* Chatting Grid : all the users who are messaged */
+
+#chat-grid {
+  background-color: var(--nav-bg-color);
+  grid-row: span 2;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: var(--lightgray-border);
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: repeat(auto-fill, 10vh);
+  grid-row-gap: 1px;
+  overflow: auto;
+}
+.message_credentials:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+.message_credentials {
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+}
+
+.message_credentials img {
+  height: 70px;
+  width: auto;
+  border-radius: 50%;
+  margin: 15px;
+  place-self: center;
+}
+.message_credentials p {
+  align-self: center;
+  margin: 0px;
+}
+
+.mc_options {
+  display: grid;
+}
+.mc_options small {
+  place-self: center;
+  align-self: end;
+
+  color: var(--lighttext);
+}
+
+.message_credentials .mc_options i:hover {
+  color: var(--decoration-color);
+}
+.mc_options i {
+  place-self: center;
+  align-self: start;
+  margincursor: pointer;
+
+  color: var(--lighttext);
+}
+
+.mc_info {
+  align-self: center;
+}
+.mc_name {
+  font-size: 2.4ch;
+}
+.mc_message {
+  color: rgb(173, 169, 169);
+}
+
+.mc_message i {
+  font-size: 1.9ch;
 }
