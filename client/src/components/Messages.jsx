@@ -3,11 +3,12 @@ import { Icon } from 'react-materialize'
 import { Field, reduxForm } from 'redux-form'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { usersonline } from '../actions/ioLogin'
+import { loggedIn_reducer } from '../actions/ioLogin'
+import { userTyping } from '../actions/userTyping'
 
 class Messages extends Component {
   componentWillMount() {
-    this.props.usersonline()
+    this.props.loggedIn_reducer(this.props)
   }
   Message_search = () => (
     <div id="message-search">
@@ -54,8 +55,8 @@ class Messages extends Component {
     </div>
   )
 
-  Test(e) {
-    console.log(e.target.value)
+  typing(e) {
+    this.props.userTyping(e)
   }
 
   Message_fiels = () => (
@@ -63,7 +64,7 @@ class Messages extends Component {
       <div className="message-input">
         <input
           type="text"
-          onChange={this.Test.bind(this)}
+          onChange={this.typing.bind(this)}
           placeholder="Type a message..."
         />
         <Icon className="photo-pic">photo</Icon>
@@ -102,14 +103,16 @@ class Messages extends Component {
   }
 }
 Messages.propTypes = {
-  usersonline: PropTypes.func.isRequired
+  usersonline: PropTypes.func.isRequired,
+  userTyping: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-  usersonline: state.usersonline.loggedinusers
+  usersonline: state.loggedIn_reducer.loggedinusers,
+  UserTyping: state.userTyping
 })
 
 export default connect(
   mapStateToProps,
-  { usersonline }
+  { loggedIn_reducer, userTyping }
 )(Messages)

@@ -3,11 +3,13 @@ import { reducer as formReducer } from 'redux-form'
 import user_reducer from './user_reducer'
 import { loadingBarReducer } from 'react-redux-loading-bar'
 import user_auth from './user_auth'
-import usersonline from './loggedIn_reducer'
+import loggedIn_reducer from './loggedIn_reducer'
+import userTyping from './userTyping'
 export default combineReducers({
   users: user_reducer,
   loadingBar: loadingBarReducer,
   form: formReducer,
   user_auth,
-  usersonline
+  loggedIn_reducer,
+  userTyping
 })
