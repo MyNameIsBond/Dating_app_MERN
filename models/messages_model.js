@@ -1,19 +1,21 @@
 const mongoose = require('mongoose')
+// try to encrypt the messages
 const bcrypt = require('bcrypt')
 const Chat_Message = mongoose.Schema({
-  message: {
-    type: String,
-    required: true
-  },
-  user: {
-    type: String,
-    required: true
-  },
-  time: {
-    type: Date,
-    required: true,
-    default: Date.now
-  }
+  users: [
+    {
+      type: String,
+      required: true
+    }
+  ],
+  messages: [
+    {
+      body: String,
+      date: { type: Date, default: Date.now },
+      user: String,
+      seen: { type: Boolean, default: false }
+    }
+  ]
 })
 
 let Chat = (module.exports = mongoose.model('Chat', Chat_Message))
