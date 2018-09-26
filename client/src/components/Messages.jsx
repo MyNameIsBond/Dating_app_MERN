@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loggedIn_reducer } from '../actions/ioLogin'
 import { userTyping } from '../actions/userTyping'
+import { send_message } from '../actions/send_message'
 
 class Messages extends Component {
   componentWillMount() {
@@ -58,6 +59,9 @@ class Messages extends Component {
   typing(e) {
     this.props.userTyping(e)
   }
+  Test() {
+    console.log()
+  }
 
   Message_fiels = () => (
     <div id="message-fields">
@@ -104,15 +108,17 @@ class Messages extends Component {
 }
 Messages.propTypes = {
   usersonline: PropTypes.func.isRequired,
-  userTyping: PropTypes.func.isRequired
+  userTyping: PropTypes.func.isRequired,
+  send_message: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
   usersonline: state.loggedIn_reducer.loggedinusers,
-  UserTyping: state.userTyping
+  UserTyping: state.userTyping,
+  send_message: state.send_message
 })
 
 export default connect(
   mapStateToProps,
-  { loggedIn_reducer, userTyping }
+  { loggedIn_reducer, userTyping, send_message }
 )(Messages)

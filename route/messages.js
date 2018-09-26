@@ -6,10 +6,13 @@ const Chat = require('../models/messages_model')
 
 router.get('/', async (req, res) => {
   let chat = new Chat()
-  chat.users = { user1: 'Skatas', user2: 'DiploSkatas' }
-  chat.users.messages.body = 'Poy eisai Agori'
-  chat.users.messages.user = 'DiploSkatas'
-
+  chat.users = 'Skatas'
+  chat.messages = {
+    body: 'Poy eisai Agori',
+    user: 'Diploskatas'
+  }
+  const s = await chat.save()
+  console.log('saved ')
   const messages = await Chat.find({})
   res.send(messages)
 })
