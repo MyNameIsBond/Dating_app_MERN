@@ -41,10 +41,7 @@ db.once('open', () => {
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  )
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
 
@@ -60,16 +57,12 @@ io.on('connection', socket => {
   const user = 'ela_mwrh_omada'
   console.log('connection')
 })
-app.get(
-  '/users',
-  passport.authenticate('jwt', { session: false }),
-  async (req, res) => {
-    const users = await User.find({})
-    // the Logged in User. req.user
-    const req_user = req.user
-    return res.send(users)
-  }
-)
+app.get('/users', async (req, res) => {
+  const users = await User.find({})
+  // the Logged in User. req.user
+  const req_user = req.user
+  return res.send(users)
+})
 
 // Router URLs
 app.use('/messages', messanger)
