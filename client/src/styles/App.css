@@ -158,6 +158,7 @@ nav > div > div > ul > li > a > li > a:hover {
   /* Try to find a way for the grid to cover 100% */
   grid-auto-rows: 10%;
   width: 100vw;
+  overflow-y: scroll;
   height: 92vh;
   position: fixed;
 }

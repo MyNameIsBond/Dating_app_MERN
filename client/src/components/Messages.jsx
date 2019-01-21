@@ -19,7 +19,10 @@ class Messages extends Component {
   )
 
   Message_credentials = () => (
-    <div className="message_credentials profile-buttons waves-effect waves-green">
+    <div
+      onClick={e => console.log(e.timeStamp)}
+      className="message_credentials profile-buttons waves-effect waves-green"
+    >
       <img src={require('./hot-girls-5.jpg')} alt="" />
       <div className="mc_info">
         <p className="mc_name">Dolores </p>
@@ -91,13 +94,6 @@ class Messages extends Component {
 
   Message_fiels = () => (
     <div id="message-fields">
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
       <this.receiverMessage />
       <this.receiverMessage />
       <this.senderMessage />
