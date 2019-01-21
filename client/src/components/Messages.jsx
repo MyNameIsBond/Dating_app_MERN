@@ -19,10 +19,10 @@ class Messages extends Component {
   )
 
   Message_credentials = () => (
-    <div className="message_credentials">
+    <div className="message_credentials profile-buttons waves-effect waves-green">
       <img src={require('./hot-girls-5.jpg')} alt="" />
       <div className="mc_info">
-        <p className="mc_name" />
+        <p className="mc_name">Dolores </p>
         <p className="mc_message">
           <Icon>done_all</Icon>
           Hey cutie
@@ -30,7 +30,9 @@ class Messages extends Component {
       </div>
       <div className="mc_options">
         <small>3 mins ago</small>
-        <Icon>keyboard_arrow_down</Icon>
+        <Icon className="profile-buttons icons-btn waves-effect waves-white">
+          keyboard_arrow_down
+        </Icon>
       </div>
     </div>
   )
@@ -43,7 +45,7 @@ class Messages extends Component {
         <p className="user-info-email">m1lt0s@hotmail.com</p>
       </div>
       <div className="user-info-buttons">
-        <Icon>more_horiz</Icon>
+        <Icon className="profile-buttons icons-btn waves-effect waves-white">more_horiz</Icon>
       </div>
     </div>
   )
@@ -52,6 +54,7 @@ class Messages extends Component {
     <div id="chat-grid">
       <this.User_info />
       <this.Message_search />
+      <this.Message_credentials />
       <this.Message_credentials />
     </div>
   )
@@ -63,21 +66,51 @@ class Messages extends Component {
     console.log()
   }
 
+  senderMessage = () => (
+    <div className="senderMessage">
+      <img src={require('./hot-girls-5.jpg')} alt="" />
+      <div className="actualMessage">
+        <small>13:40</small>
+        <p>Hey, My name is Dolores.</p>
+      </div>
+    </div>
+  )
+
+  receiverMessage = () => (
+    <div className="receiverMessage">
+      <Icon small className="profile-buttons icons-btn waves-effect waves-white">
+        more_horiz
+      </Icon>
+      <div className="actualMessageReceiver">
+        <small>13:45</small>
+        <p>Hey Dolores. N</p>
+      </div>
+      <img src={require('./hot-girls-5.jpg')} alt="" />
+    </div>
+  )
+
   Message_fiels = () => (
     <div id="message-fields">
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.senderMessage />
+
       <div className="message-input">
-        <input
-          type="text"
-          onChange={this.typing.bind(this)}
-          placeholder="Type a message..."
-        />
+        <input type="text" onChange={this.typing.bind(this)} placeholder="Type a message..." />
         <Icon className="photo-pic">photo</Icon>
         <i onClick={this.Test} className="material-icons photo-send">
           send
         </i>
 
-        <Icon className="photo-gif">gif</Icon>
-        <Icon className="photo-mood">mood</Icon>
+        <Icon className="photo-gif profile-buttons icons-btn waves-effect waves-white">gif</Icon>
+        <Icon className="photo-mood profile-buttons icons-btn waves-effect waves-white">mood</Icon>
       </div>
     </div>
   )
@@ -87,10 +120,17 @@ class Messages extends Component {
       <div className="user-info-card">
         <img src={require('./user.png')} alt="" />
         <p>Amanda,26</p>
-        <Icon className="">more_horiz</Icon>
+        <Icon className="profile-buttons icons-btn waves-effect waves-white">more_horiz</Icon>
       </div>
-      <Icon className="">photo_camera</Icon>
+      <Icon className="profile-buttons icons-btn waves-effect waves-white">photo_camera</Icon>
       <div className="user-info-photos">
+        <img src={require('./hot-girls-5.jpg')} />
+        <img src={require('./hot-girls-5.jpg')} />
+        <img src={require('./hot-girls-5.jpg')} />
+        <img src={require('./hot-girls-5.jpg')} />
+        <img src={require('./hot-girls-5.jpg')} />
+        <img src={require('./hot-girls-5.jpg')} />
+        <img src={require('./hot-girls-5.jpg')} />
         <img src={require('./hot-girls-5.jpg')} />
       </div>
     </div>

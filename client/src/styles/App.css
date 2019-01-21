@@ -8,8 +8,8 @@
   --shadow-color: rgba(0, 0, 0, 0.4);
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   /* Box shdadow for pop up menus */
-  --box-shadow-Menus: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
-    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+  --box-shadow-Menus: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
+    0 8px 10px -5px rgba(0, 0, 0, 0.4);
   /* --hover-color:; */
   --lightgray-border: rgb(224, 224, 224);
   --lighttext: rgb(173, 169, 169);
@@ -154,37 +154,40 @@ nav > div > div > ul > li > a > li > a:hover {
 .messages-grid {
   background-color: var(--nav-bg-color);
   display: grid;
-  grid-auto-columns: 25vw;
+  grid-auto-columns: 25%;
   /* Try to find a way for the grid to cover 100% */
-  grid-auto-rows: 25vw;
+  grid-auto-rows: 10%;
   width: 100vw;
-  height: 100vh;
+  height: 92vh;
   position: fixed;
 }
 
 #message-fields {
   background-color: var(--bg-color);
   grid-column: span 2;
-  grid-row: span 3;
+  grid-row: span 9;
   display: grid;
-  grid-template-rows: repeat(auto-fill, 5%);
+  overflow-y: auto;
+  grid-template-rows: repeat(minmax(14%, auto));
+  padding: 20px 0px;
 }
 
 #message-infos {
   grid-column: 4;
-  grid-row: span 3;
+  grid-row: span 10;
   border-left-width: 1px;
   border-left-style: solid;
   border-left-color: var(--lightgray-border);
   background-color: var(--nav-bg-color);
   display: grid;
-  grid-template-rows: 5% 5% 90%;
+  grid-template-rows: 14% 14% auto;
   overflow-y: auto;
 }
 .user-info-photos {
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  grid-template-rows: repeat(auto-fill, 12%);
+  overflow-x: hidden;
+  grid-template-rows: repeat(auto-fill, 20%);
   grid-gap: 4px;
 }
 
@@ -193,7 +196,7 @@ nav > div > div > ul > li > a > li > a:hover {
   justify-self: stretch;
   background-color: black;
   width: 100%;
-  max-height: 100%;
+  height: 20%;
 }
 
 .user-info-card {
@@ -220,9 +223,11 @@ nav > div > div > ul > li > a > li > a:hover {
   color: var(--lighttext);
   align-self: center;
   justify-self: center;
+  padding: 25px;
 }
 .user-info-card i {
   align-self: center;
+  justify-self: start;
   color: var(--lighttext);
   cursor: pointer;
 }
@@ -231,21 +236,26 @@ nav > div > div > ul > li > a > li > a:hover {
 }
 
 .message-input {
+  position: fixed;
   border-top-color: var(--lightgray-border);
   border-top-style: solid;
-  border-top-width: 1px;
+  border-top-width: 0px;
   background-color: var(--nav-bg-color);
-  grid-row: 13;
+  bottom: 0px;
+  width: 50%;
+  height: 9%;
   display: grid;
-  position: relative;
 }
+
 .message-input input {
-  width: 67%;
+  width: 66%;
   place-self: center;
   height: 50%;
   border: 1px solid var(--lightgray-border);
   border-radius: 20px;
-  padding: 0px 75px;
+  padding: 0px 65px 0px 56px;
+  margin: 10px 0px 15px 0px;
+  font-size: 12pt;
 }
 .message-input i:hover {
   color: var(--decoration-color);
@@ -256,21 +266,21 @@ nav > div > div > ul > li > a > li > a:hover {
   cursor: pointer;
 }
 .message-input .photo-gif {
-  left: 95px;
-  top: 12px;
+  left: 8%;
+  top: 33%;
 }
 .message-input .photo-mood {
-  left: 120px;
-  top: 12px;
+  left: 12%;
+  top: 33%;
 }
 .message-input .photo-pic {
-  right: 130px;
-  top: 12px;
+  right: 15%;
+  top: 33%;
 }
 .message-input .photo-send {
   color: var(--decoration-color);
-  right: 100px;
-  top: 12px;
+  right: 10%;
+  top: 33%;
 }
 /* Search Through messanger. ( people you have messaged) */
 #message-search {
@@ -291,16 +301,15 @@ nav > div > div > ul > li > a > li > a:hover {
 #message-search input {
   padding-left: 10%;
 
-  margin: 25px;
+  margin: 25px 25px 25px 14px;
   width: 80%;
-  height: 50%;
   border: solid var(--lightgray-border) 1px;
   border-radius: 20px;
 }
 #message-search i {
   position: absolute;
-  top: 38px;
-  left: 38px;
+  top: 37px;
+  left: 20px;
   color: var(--lighttext);
 }
 
@@ -319,6 +328,7 @@ nav > div > div > ul > li > a > li > a:hover {
 .user-info {
   display: grid;
   grid-column: span 3;
+  padding: 17px 0px;
   grid-template-columns: 25% 50% 25%;
 }
 .user-info img {
@@ -352,15 +362,19 @@ nav > div > div > ul > li > a > li > a:hover {
 
 #chat-grid {
   background-color: var(--nav-bg-color);
-  grid-row: span 2;
+  grid-row: span 10;
   border-right-width: 1px;
   border-right-style: solid;
   border-right-color: var(--lightgray-border);
+
   display: grid;
+  overflow-x: hidden;
+  overflow-y: auto;
+  white-space: nowrap;
+
   grid-template-columns: 25% 50% 25%;
-  grid-template-rows: repeat(auto-fill, 10vh);
+  grid-template-rows: repeat(auto-fill, 14%);
   grid-row-gap: 1px;
-  overflow: auto;
 }
 .message_credentials:hover {
   background-color: rgba(0, 0, 0, 0.05);
@@ -369,7 +383,7 @@ nav > div > div > ul > li > a > li > a:hover {
 .message_credentials {
   grid-column: span 3;
   display: grid;
-  grid-template-columns: 25% 50% 25%;
+  grid-template-columns: 25% auto 25%;
 }
 
 .message_credentials img {
@@ -417,4 +431,85 @@ nav > div > div > ul > li > a > li > a:hover {
 
 .mc_message i {
   font-size: 1.9ch;
+}
+
+/* Chat's messages sender */
+
+.senderMessage {
+  display: grid;
+  grid-template-columns: 20% 65% auto;
+}
+.senderMessage img {
+  align-self: center;
+  height: 70px;
+  justify-self: center;
+  border: solid 1px var(--lightgray-border);
+  border-radius: 50%;
+}
+
+.senderMessage .actualMessage {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.actualMessage p {
+  border-radius: 0px 20px 20px 20px;
+  box-shadow: var(--box-shadow);
+  align-self: start;
+  justify-self: start;
+
+  padding: 10px;
+  background-color: var(--lightgray-border);
+}
+.actualMessage small {
+  align-self: end;
+}
+
+/* Receiver message */
+
+.receiverMessage {
+  display: grid;
+  grid-template-columns: auto minmax(100px, auto) 20%;
+}
+.receiverMessage img {
+  align-self: center;
+  height: 70px;
+  justify-self: center;
+  border: solid 1px var(--lightgray-border);
+  border-radius: 50%;
+}
+.receiverMessage .actualMessageReceiver {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+.actualMessageReceiver small {
+  align-self: end;
+}
+.actualMessageReceiver p {
+  background-color: var(--decoration-color);
+  color: var(--nav-bg-color);
+  border-radius: 20px 0px 20px 20px;
+  box-shadow: var(--box-shadow);
+  justify-self: end;
+  align-self: start;
+  padding: 10px;
+}
+.receiverMessage i {
+  justify-self: end;
+  align-self: center;
+  color: var(--lightgray-border);
+}
+.receiverMessage i:hover {
+  color: var(--decoration-color);
+  cursor: pointer;
+}
+
+.actualMessageReceiver small {
+  justify-self: end;
+}
+
+/* make all icon buttons round */
+
+.icons-btn {
+  border-radius: 50%;
 }
