@@ -1,7 +1,11 @@
 
 To do: 
 
-1) Home page, messages page, blog,and write a blog.
+1) Home page, messages page, swapping page.
+
+Messages Page:
+Profile Page:
+Home Page:
 
 
 in progress: 

@@ -21,7 +21,6 @@ export const registerAction = async (values, dispatch, props) => {
       const errors = json.error.regError
       throw errors
     }
-    // do long running stuff
     localStorage.setItem('token', json.token)
     setAuthorizationToken(json.token)
     dispatch(setCurrentUser(jwt.decode(json.token)))

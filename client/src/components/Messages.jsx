@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Icon } from 'react-materialize'
-import { Field, reduxForm } from 'redux-form'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loggedIn_reducer } from '../actions/ioLogin'
@@ -23,7 +22,7 @@ class Messages extends Component {
       onClick={e => console.log(e.timeStamp)}
       className="message_credentials profile-buttons waves-effect waves-green"
     >
-      <img src={require('./hot-girls-5.jpg')} alt="" />
+      <img src={require('./hot-girls-5.jpg')} />
       <div className="mc_info">
         <p className="mc_name">Dolores </p>
         <p className="mc_message">

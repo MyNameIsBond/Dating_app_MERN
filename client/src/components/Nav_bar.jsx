@@ -3,14 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { logout } from '../actions/user_authentication'
 import '../styles/App.css'
-import {
-  Icon,
-  Navbar,
-  NavItem,
-  SideNav,
-  SideNavItem,
-  Button
-} from 'react-materialize'
+import { Icon, Navbar, NavItem, SideNav, SideNavItem, Button } from 'react-materialize'
 import { NavLink } from 'react-router-dom'
 
 class Navigation extends Component {
@@ -38,6 +31,11 @@ class Navigation extends Component {
         <NavItem onClick={this.prevent_from_refresh}>
           <NavLink to="/blog">
             <Icon>dashboard</Icon>
+          </NavLink>
+        </NavItem>
+        <NavItem onClick={this.prevent_from_refresh}>
+          <NavLink to="/profile">
+            <Icon>person</Icon>
           </NavLink>
         </NavItem>
         <NavItem onClick={this.prevent_from_refresh}>
