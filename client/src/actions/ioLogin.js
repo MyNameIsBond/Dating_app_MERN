@@ -14,10 +14,7 @@ export const loggedIn_reducer = () => (dispatch, props) => {
     username: 'Tony',
     userID: 'k12lj3h12k3j1h23l'
   }
-  dispatch({
-    type: USER_LOGGEDIN,
-    payload: user
-  })
+  dispatch({ type: USER_LOGGEDIN, payload: user })
   socket.emit('hello', { loser: 'Tony' })
   console.log('pfff')
 }

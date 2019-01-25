@@ -6,6 +6,7 @@ import user_auth from './user_auth'
 import loggedIn_reducer from './loggedIn_reducer'
 import userTyping from './userTyping'
 import send_message from './send_message'
+import userReducer from './userReducer'
 export default combineReducers({
   users: user_reducer,
   loadingBar: loadingBarReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   user_auth,
   loggedIn_reducer,
   userTyping,
-  send_message
+  send_message,
+  userReducer
 })
