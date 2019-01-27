@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './styles/App.css'
 import Blog from './components/Blog.jsx'
 import Profile from './components/Profile.jsx'
@@ -26,7 +26,7 @@ export default class App extends Component {
               <Route path="/" component={Home} exact />
               <Route path="/messages" component={Messages} />
               <Route path="/blog" component={Blog} />
-              <Route path="/profile" component={Profile} />
+              <Route path="/profile/:user" component={Profile} />
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
             </Switch>

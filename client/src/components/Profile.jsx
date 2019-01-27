@@ -9,14 +9,14 @@ import { connect } from 'react-redux'
 
 class Profile extends Component {
   componentWillMount() {
-    this.props.fetchUser()
+    const user = this.props.match.params.user
+    this.props.fetchUser(user)
   }
 
   render() {
-    const { user } = this.props
     return (
       <div>
-        <h2>{user}</h2>
+        <h2>hey</h2>
       </div>
     )
   }

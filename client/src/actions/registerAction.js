@@ -5,6 +5,7 @@ import { setCurrentUser } from '../actions/user_authentication'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 export const registerAction = async (values, dispatch, props) => {
+  console.log(values)
   const settings = {
     method: 'post',
     body: JSON.stringify({ values }),
@@ -17,7 +18,6 @@ export const registerAction = async (values, dispatch, props) => {
     dispatch(showLoading())
     const json = await res.json()
     if (json.error) {
-      console.log(json.error)
       const errors = json.error.regError
       throw errors
     }

@@ -77,7 +77,7 @@ const validate = values => {
 }
 
 const Regiser = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, submitting } = props
   return (
     <div>
       <div className="container login_style">
@@ -86,28 +86,22 @@ const Regiser = props => {
           <form onSubmit={handleSubmit(registerAction)}>
             <Icon>person</Icon>
 
-            <Field
-              name="username"
-              type="text"
-              component={renderField}
-              label="Username"
-            />
+            <Field name="username" type="text" component={renderField} label="Username" />
+            <Icon>wc</Icon>
+            <br />
+            <label>Gender</label>
+            <Row>
+              <label>
+                <Field name="sex" component={Input} type="radio" value="male" /> Male
+              </label>
+              <label>
+                <Field name="sex" component={Input} type="radio" value="female" /> Female
+              </label>
+            </Row>
             <Icon>mail</Icon>
-
-            <Field
-              name="email"
-              type="email"
-              component={renderField}
-              label="Email"
-            />
+            <Field name="email" type="email" component={renderField} label="Email" />
             <Icon>lock</Icon>
-
-            <Field
-              name="password"
-              type="password"
-              component={renderField}
-              label="password"
-            />
+            <Field name="password" type="password" component={renderField} label="password" />
             <Icon>lock</Icon>
 
             <Field
@@ -116,11 +110,7 @@ const Regiser = props => {
               component={renderField}
               label="Repeat Password"
             />
-            <button
-              className="waves-effect waves-light btn"
-              type="submit"
-              disabled={submitting}
-            >
+            <button className="waves-effect waves-light btn" type="submit" disabled={submitting}>
               Register
             </button>
           </form>

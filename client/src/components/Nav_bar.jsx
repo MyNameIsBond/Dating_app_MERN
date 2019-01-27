@@ -16,30 +16,42 @@ class Navigation extends Component {
   }
   render() {
     const { isAuthenticated } = this.props.user_auth
+    const { id } = this.props.user_auth.user
     const User = (
       <NavItem>
         <NavItem onClick={this.prevent_from_refresh}>
-          <NavLink to="/">
+          <NavLink to="/" activeClassName="is-selected">
             <Icon>home</Icon>
           </NavLink>
         </NavItem>
         <NavItem onClick={this.prevent_from_refresh}>
-          <NavLink to="/messages">
+          <NavLink to="/messages" activeClassName="is-selected">
             <Icon>message</Icon>
           </NavLink>
         </NavItem>
         <NavItem onClick={this.prevent_from_refresh}>
-          <NavLink to="/blog">
+          <NavLink to="/blog" activeClassName="is-selected">
             <Icon>dashboard</Icon>
           </NavLink>
         </NavItem>
         <NavItem onClick={this.prevent_from_refresh}>
-          <NavLink to="/profile">
+          <NavLink
+            to={{
+              pathname: `/profile/${id}`,
+              state: { user: id }
+            }}
+            activeClassName="is-selected"
+          >
             <Icon>person</Icon>
           </NavLink>
         </NavItem>
         <NavItem onClick={this.prevent_from_refresh}>
-          <NavLink to="/" className="logreg" onClick={this.logout.bind(this)}>
+          <NavLink
+            to="/"
+            className="logreg"
+            onClick={this.logout.bind(this)}
+            activeClassName="is-selected"
+          >
             LOGOUT
           </NavLink>
         </NavItem>
