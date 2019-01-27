@@ -90,14 +90,6 @@ const Regiser = props => {
             <Icon>wc</Icon>
             <br />
             <label>Gender</label>
-            <Row>
-              <label>
-                <Field name="sex" component={Input} type="radio" value="male" /> Male
-              </label>
-              <label>
-                <Field name="sex" component={Input} type="radio" value="female" /> Female
-              </label>
-            </Row>
             <Icon>mail</Icon>
             <Field name="email" type="email" component={renderField} label="Email" />
             <Icon>lock</Icon>
