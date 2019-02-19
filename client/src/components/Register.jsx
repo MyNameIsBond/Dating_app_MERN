@@ -1,123 +1,85 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { isNotEmail } from 'sane-email-validation'
-import { Row, Input, Icon, Button } from 'react-materialize'
-import { renderField } from './renderField'
-import { Link } from 'react-router-dom'
-import { registerAction } from '../actions/registerAction'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import RegisterFormFirstPage from './introduction1'
+import RegisterFormSecondPage from './introduction2'
+import RegiserLastPage from './Introduction3'
+import { Carousel, Row } from 'react-materialize'
 
-const Ad_card = () => {
-  return (
-    <div>
-      <Icon>account_circle</Icon>
-      <h4>Something cool</h4>
-    </div>
-  )
-}
-
-const Ad_card2 = () => {
-  return (
-    <div>
-      <Icon>account_circle</Icon>
-      <h4>Something cool</h4>
-    </div>
-  )
-}
-
-const Ad_card3 = () => {
-  return (
-    <div>
-      <Icon>account_circle</Icon>
-      <h4>Something cool</h4>
-    </div>
-  )
-}
-
-const Advertisement = () => {
-  return (
-    <div className="ad_card">
-      <ul>
-        <li>
-          <Ad_card />
-        </li>
-        <li>
-          <Ad_card2 />
-        </li>
-        <li>
-          <Ad_card3 />
-        </li>
-      </ul>
-    </div>
-  )
-}
-
-const validate = values => {
-  const errors = {}
-  if (!values.username) {
-    errors.username = 'Required'
-  } else if (values.username.length > 15) {
-    errors.username = 'Must be 15 characters or less'
+class WizardForm extends Component {
+  constructor(props) {
+    super(props)
+    this.nextPage = this.nextPage.bind(this)
+    this.previousPage = this.previousPage.bind(this)
+    this.state = {
+      page: 1
+    }
   }
-  if (!values.email) {
-    errors.email = 'Required'
-  } else if (isNotEmail(values.email)) {
-    errors.email = 'Invalid email address'
+  nextPage() {
+    this.setState({ page: this.state.page + 1 })
   }
-  if (!values.password) {
-    errors.password = 'Required'
-  } else if (values.password.length <= 7) {
-    errors.password = 'Password should be more than 8 characters'
+
+  previousPage() {
+    this.setState({ page: this.state.page - 1 })
   }
-  if (!values.password2) {
-    errors.password2 = 'Required'
-  } else if (values.password2.length <= 7) {
-    errors.password2 = 'Password should be more than 8 characters'
-  }
-  return errors
-}
 
-const Regiser = props => {
-  const { handleSubmit, submitting } = props
-  return (
-    <div>
-      <div className="container login_style">
-        <h4>REGISTER</h4>
-        <div className="login_inner">
-          <form onSubmit={handleSubmit(registerAction)}>
-            <Icon>person</Icon>
-
-            <Field name="username" type="text" component={renderField} label="Username" />
-            <Icon>wc</Icon>
-            <br />
-            <label>Gender</label>
-            <Icon>mail</Icon>
-            <Field name="email" type="email" component={renderField} label="Email" />
-            <Icon>lock</Icon>
-            <Field name="password" type="password" component={renderField} label="password" />
-            <Icon>lock</Icon>
-
-            <Field
-              name="password2"
-              type="password"
-              component={renderField}
-              label="Repeat Password"
-            />
-            <button className="waves-effect waves-light btn" type="submit" disabled={submitting}>
-              Register
-            </button>
-          </form>
-          <Link to="/login" id="register-link">
-            Login
-          </Link>
+  welcome() {
+    return (
+      <Carousel options={{ fullWidth: true, indicators: true }}>
+        <div className="carousel-div">
+          <div className="img-div">
+            <img src={require('../icons/location.png')} alt="" />
+            <h2 className="">Best matches around</h2>
+            <p className="grey-text">
+              According to your location and your preferences, People will be waiting.
+            </p>
+          </div>
         </div>
+        <div className="carousel-div">
+          <div className="img-div">
+            <img src={require('../icons/messages.png')} alt="" />
+            <h2 className="text-div">Innovating messaging</h2>
+            <p className="grey-text text-div">The coolest features and the most secure chatting</p>
+          </div>
+        </div>
+
+        <div className="carousel-div">
+          <div className="img-div">
+            <img src={require('../icons/green-icon-cloud.png')} alt="" />
+            <h2> The choice is yours</h2>
+            <p className="grey-text">You decide which sent pictures to be saved</p>
+          </div>
+        </div>
+        <div className="carousel-div">
+          <div className="img-div">
+            <img src={require('../icons/phone.png')} alt="" />
+            <h2>Comming soon!</h2>
+            <p className="grey-text">
+              We are working hard for you to have access in Andoid and iOS.
+            </p>
+          </div>
+        </div>
+      </Carousel>
+    )
+  }
+
+  render() {
+    const { onSubmit } = this.props
+    const { page } = this.state
+    return (
+      <div className="container">
+        <this.welcome />
+        {page === 1 && <RegisterFormFirstPage onSubmit={this.nextPage} />}
+        {page === 2 && (
+          <RegisterFormSecondPage previousPage={this.previousPage} onSubmit={this.nextPage} />
+        )}
+        {page === 3 && <RegiserLastPage previousPage={this.previousPage} onSubmit={onSubmit} />}
       </div>
-      <Advertisement />
-    </div>
-  )
+    )
+  }
 }
 
-export default reduxForm({
-  form: 'Register', // a unique identifier for this form
-  validate, // <--- validation function given to redux-form
-  renderField // <--- warning function given to redux-form
-})(Regiser)
+WizardForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+}
+
+export default WizardForm
