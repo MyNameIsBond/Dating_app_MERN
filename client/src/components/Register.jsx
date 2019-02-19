@@ -14,6 +14,7 @@ class WizardForm extends Component {
       page: 1
     }
   }
+  //commit test
   nextPage() {
     this.setState({ page: this.state.page + 1 })
   }
