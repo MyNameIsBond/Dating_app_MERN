@@ -127,19 +127,6 @@ class Messages extends Component {
       </div>
       <Icon className="profile-buttons icons-btn waves-effect waves-white">photo_camera</Icon>
       <div className="user-info-photos">
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
-        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
         <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
         <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
         <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />

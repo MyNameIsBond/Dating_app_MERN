@@ -50,13 +50,8 @@ const server = app.listen(port, () => {
   console.log(`server is on port: ${port}`)
 })
 const io = require('socket.io').listen(server)
-io.on('connection', socket => {
-  socket.on('hello', data => {
-    console.log(data)
-  })
-  const user = 'ela_mwrh_omada'
-  console.log('connection')
-})
+const ioChat = require('./route/ioChatting')(io)
+
 app.get('/users', async (req, res) => {
   const users = await User.find({})
   // the Logged in User. req.user

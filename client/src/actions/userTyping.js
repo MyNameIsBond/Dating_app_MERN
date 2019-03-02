@@ -5,6 +5,7 @@ export const userTyping = () => dispatch => {
   dispatch({
     type: USER_TYPING,
     user: 'Tony',
-    typing: true
+    typing: true,
+    message: 'Hello Tony, I am your future wife'
   })
 }
