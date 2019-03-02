@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { isNotEmail } from 'sane-email-validation'
-import { Row, Input, Icon, Button } from 'react-materialize'
+import { Icon } from 'react-materialize'
 import { renderField } from './renderField'
 import { Link } from 'react-router-dom'
 import { registerAction } from '../actions/registerAction'
@@ -52,7 +52,7 @@ const RegiserLastPage = props => {
             <Field name="username" type="text" component={renderField} label="Username" />
             <Icon>mail</Icon>
             <Field name="email" type="email" component={renderField} label="Email" />
-            <Icon>lock</Icon>
+
             <Field name="password" type="password" component={renderField} label="password" />
             <Icon>lock</Icon>
 

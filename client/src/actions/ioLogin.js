@@ -1,7 +1,7 @@
 import { USER_LOGGEDIN } from './types'
 import socketIOClient from 'socket.io-client'
-const socket = socketIOClient(url)
 const url = 'http://localhost:8080'
+const socket = socketIOClient(url)
 
 export const loggedIn_reducer = () => (dispatch, props) => {
   // socket.on('say to someone', (id, msg) => {

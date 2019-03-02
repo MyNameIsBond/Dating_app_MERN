@@ -56,7 +56,7 @@ body {
 }
 
 i {
-  color: var(--lightgray-border);
+  color: var(--decoration-color);
 }
 nav .brand-logo {
   color: var(--decoration-color);
@@ -227,7 +227,7 @@ nav > div > div > ul > li > a > li > a:hover {
   justify-self: stretch;
   background-color: black;
   width: 100%;
-  height: 20%;
+  height: 100%;
 }
 
 .user-info-card {

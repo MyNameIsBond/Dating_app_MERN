@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { logout } from '../actions/user_authentication'
 import '../styles/App.css'
-import { Icon, Navbar, NavItem, SideNav, SideNavItem, Button } from 'react-materialize'
+import { Icon, Navbar, NavItem } from 'react-materialize'
 import { NavLink } from 'react-router-dom'
 
 class Navigation extends Component {
@@ -66,7 +66,7 @@ class Navigation extends Component {
           </NavLink>
         </NavItem>
         <NavItem onClick={this.prevent_from_refresh}>
-          <NavLink className="logreg" to="/Register">
+          <NavLink className="logreg" to="/register">
             Register
           </NavLink>
         </NavItem>

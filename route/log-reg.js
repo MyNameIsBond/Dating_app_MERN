@@ -31,26 +31,22 @@ passport.use(
 
 router.post('/register', async (req, res) => {
   req.body = req.body.values
-  const { email, password, password2, username } = req.body
+  const { email, password, password2, username, gender } = req.body
   let user = new User()
   user.username = username
   user.email = email
   user.password = password
+  user.gender = gender
+  console.log(gender)
   // check
   req.checkBody('email', 'This is not a valid e mail').isEmail()
-  req
-    .checkBody('username', 'your username should be more than 6 characters')
-    .isLength({
-      min: 3
-    })
-  req
-    .checkBody('password', 'The password should be more than 8 characters')
-    .isLength({
-      min: 8
-    })
-  req
-    .checkBody('password2', 'Passwords do not not match')
-    .equals(req.body.password)
+  req.checkBody('username', 'your username should be more than 6 characters').isLength({
+    min: 3
+  })
+  req.checkBody('password', 'The password should be more than 8 characters').isLength({
+    min: 8
+  })
+  req.checkBody('password2', 'Passwords do not not match').equals(req.body.password)
   let errors = req.validationErrors()
   if (errors) {
     regError = {}

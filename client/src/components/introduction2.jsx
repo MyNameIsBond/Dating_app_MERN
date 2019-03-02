@@ -1,41 +1,9 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import validate from './validate'
-import { renderField } from './renderField'
-import { Row, Input, Icon, Breadcrumb, MenuItem } from 'react-materialize'
+import { renderField, renderRadioButton } from './renderField'
+import { Row, Breadcrumb, MenuItem } from 'react-materialize'
 
-const renderRadioButton = ({ input, ...rest,meta: { touched, error } }) => (
-  <Row>
-    <Input
-      {...input}
-      {...rest}
-      valueSelected={input.value}
-      onChange={(event, value) => input.onChange(value)}
-      s={12}
-      type="radio"
-      value="male"
-      label="Male"
-    />
-    <Input
-      {...input}
-      {...rest}
-      valueSelected={input.value}
-      onChange={(event, value) => input.onChange(value)}
-      s={12}
-      type="radio"
-      value="female"
-      label="Female"
-    />
-    {touched &&
-      ((error && (
-        <div className="error_div">
-          <Icon>report</Icon>
-          <span>{error}</span>
-        </div>
-      )) ||
-        (error && <span>{error}</span>))}
-  </Row>
-)
 const RegiserFormSecondPage = props => {
   const { handleSubmit, previousPage } = props
   return (
@@ -51,7 +19,7 @@ const RegiserFormSecondPage = props => {
         <div>
           <Row>
             <label>What is your gender</label>
-            <Field name="sex" component={renderRadioButton} />
+            <Field name="gender" component={renderRadioButton} />
           </Row>
         </div>
         <div>

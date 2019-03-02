@@ -1,7 +1,6 @@
 import { FETCH_USER } from './types'
 import axios from 'axios'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
-import Profile from '../components/Profile'
 
 export const fetchUser = user => async dispatch => {
   dispatch(showLoading())

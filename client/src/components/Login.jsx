@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import App from '../styles/App.css'
-import { Field, reduxForm, SubmissionError } from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 import { Icon } from 'react-materialize'
 import { isNotEmail } from 'sane-email-validation'
 import { renderField } from './renderField.jsx'
@@ -27,24 +27,10 @@ const SyncValidationForm = props => {
       <div className="login_inner">
         <form onSubmit={handleSubmit(signInAction)}>
           <Icon>mail</Icon>
-          <Field
-            name="email"
-            type="email"
-            component={renderField}
-            label="Email"
-          />
+          <Field name="email" type="email" component={renderField} label="Email" />
           <Icon>lock</Icon>
-          <Field
-            name="password"
-            type="password"
-            component={renderField}
-            label="Password"
-          />
-          <button
-            type="submit"
-            className="waves-effect waves-light btn"
-            disabled={submitting}
-          >
+          <Field name="password" type="password" component={renderField} label="Password" />
+          <button type="submit" className="waves-effect waves-light btn" disabled={submitting}>
             Login
           </button>
         </form>

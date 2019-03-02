@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import RegisterFormFirstPage from './introduction1'
 import RegisterFormSecondPage from './introduction2'
 import RegiserLastPage from './Introduction3'
-import { Carousel, Row } from 'react-materialize'
+import { Carousel } from 'react-materialize'
 
 class WizardForm extends Component {
   constructor(props) {
@@ -14,7 +14,6 @@ class WizardForm extends Component {
       page: 1
     }
   }
-  //commit test
   nextPage() {
     this.setState({ page: this.state.page + 1 })
   }

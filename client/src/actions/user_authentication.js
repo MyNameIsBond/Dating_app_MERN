@@ -2,7 +2,6 @@ import { SubmissionError } from 'redux-form'
 import setAuthorizationToken from '../utils/setAuthorizationToken'
 import jwt from 'jsonwebtoken'
 import { SET_CURRENT_USER } from './types'
-import { Button, Icon } from 'react-materialize'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 export const setCurrentUser = user => {

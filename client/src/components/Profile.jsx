@@ -14,6 +14,7 @@ class Profile extends Component {
   }
 
   render() {
+    const { user } = this.props
     return (
       <div>
         <h2>hey</h2>

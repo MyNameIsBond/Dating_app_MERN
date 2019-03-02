@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon } from 'react-materialize'
+import { Icon, MediaBox } from 'react-materialize'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loggedIn_reducer } from '../actions/ioLogin'
@@ -64,7 +64,7 @@ class Messages extends Component {
   typing(e) {
     this.props.userTyping(e)
   }
-  Test() {
+  test() {
     console.log()
   }
 
@@ -95,12 +95,20 @@ class Messages extends Component {
     <div id="message-fields">
       <this.receiverMessage />
       <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
+      <this.receiverMessage />
       <this.senderMessage />
 
       <div className="message-input">
         <input type="text" onChange={this.typing.bind(this)} placeholder="Type a message..." />
         <Icon className="photo-pic">photo</Icon>
-        <i onClick={this.Test} className="material-icons photo-send">
+        <i onClick={this.test} className="material-icons photo-send">
           send
         </i>
 
@@ -119,14 +127,22 @@ class Messages extends Component {
       </div>
       <Icon className="profile-buttons icons-btn waves-effect waves-white">photo_camera</Icon>
       <div className="user-info-photos">
-        <img src={require('./hot-girls-5.jpg')} />
-        <img src={require('./hot-girls-5.jpg')} />
-        <img src={require('./hot-girls-5.jpg')} />
-        <img src={require('./hot-girls-5.jpg')} />
-        <img src={require('./hot-girls-5.jpg')} />
-        <img src={require('./hot-girls-5.jpg')} />
-        <img src={require('./hot-girls-5.jpg')} />
-        <img src={require('./hot-girls-5.jpg')} />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
+        <MediaBox src={require('./hot-girls-5.jpg')} caption="A demo media box1" width="350" />
       </div>
     </div>
   )

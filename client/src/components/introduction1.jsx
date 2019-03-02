@@ -1,30 +1,8 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import validate from './validate'
-import { renderField } from './renderField'
-import { Input, Breadcrumb, MenuItem, Icon } from 'react-materialize'
-import Row from 'react-materialize/lib/Row'
-
-const renderDateTimePicker = ({ input: { onChange, value }, meta: { touched, error } }) => {
-  ;<Row>
-    <label>Date of Birth</label>
-    <input
-      type="date"
-      name="date"
-      onChange={(e, value) => {
-        console.log(e.target.value)
-      }}
-    />
-    {touched &&
-      ((error && (
-        <div className="error_div">
-          <Icon>report</Icon>
-          <span>{error}</span>
-        </div>
-      )) ||
-        (error && <span>{error}</span>))}
-  </Row>
-}
+import { renderField, renderDateTimePicker } from './renderField'
+import { Breadcrumb, MenuItem } from 'react-materialize'
 
 const RegisterFormFirstPage = props => {
   const { handleSubmit } = props
@@ -35,7 +13,7 @@ const RegisterFormFirstPage = props => {
       </Breadcrumb>
       <div className="login_inner">
         <Field name="username" type="text" component={renderField} label="Username" />
-
+        <Field name="date" type="date" component={renderDateTimePicker} label="Date" />
         <div>
           <button type="submit" className="btn next ">
             Next <i class="material-icons right">keyboard_arrow_right</i>
