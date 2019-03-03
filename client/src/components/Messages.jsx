@@ -57,15 +57,16 @@ class Messages extends Component {
       <this.User_info />
       <this.Message_search />
       <this.Message_credentials />
-      <this.Message_credentials />
     </div>
   )
 
   typing(e) {
-    this.props.userTyping(e)
+    this.props.userTyping(e.target.value)
+    console.log(e.target.value)
   }
-  test() {
-    console.log()
+
+  sendMessage(e) {
+    this.props.send_message('hey')
   }
 
   senderMessage = () => (
@@ -85,7 +86,7 @@ class Messages extends Component {
       </Icon>
       <div className="actualMessageReceiver">
         <small>13:45</small>
-        <p>Hey Dolores. N</p>
+        <p>{console.log(this.props.user_auth.user)}</p>
       </div>
       <img src={require('./hot-girls-5.jpg')} alt="" />
     </div>
@@ -94,21 +95,12 @@ class Messages extends Component {
   Message_fiels = () => (
     <div id="message-fields">
       <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
-      <this.receiverMessage />
       <this.senderMessage />
 
       <div className="message-input">
         <input type="text" onChange={this.typing.bind(this)} placeholder="Type a message..." />
         <Icon className="photo-pic">photo</Icon>
-        <i onClick={this.test} className="material-icons photo-send">
+        <i onClick={this.sendMessage.bind(this)} className="material-icons photo-send">
           send
         </i>
 

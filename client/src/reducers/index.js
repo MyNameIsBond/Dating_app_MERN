@@ -15,5 +15,5 @@ export default combineReducers({
   loggedIn_reducer,
   userTyping,
   send_message,
-  userReducer
+  user: userReducer
 })
