@@ -5,8 +5,10 @@ const User = require('../models/User')
 //  URL www.dateme.com/username or ID
 router.get('/:userID', async (req, res) => {
   const { userID } = req.params
-
-  res.send({ pic: 'kwlos', age: 21 })
+  const user = await User.findById(userID)
+  const { username, email } = user
+  console.log({ username, email })
+  res.send({ username, email })
 })
 
 module.exports = router

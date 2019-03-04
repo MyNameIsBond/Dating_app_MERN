@@ -9,9 +9,11 @@ import { send_message } from '../actions/send_message'
 import { fetchUser } from '../actions/fetchUser'
 
 class Messages extends Component {
-  componentWillMount() {
+  async componentWillMount() {
+    const { user } = this.props.user
     this.props.loggedIn_reducer()
-    this.props.user('sdfsdfsdf')
+    await this.props.fetchUser(user.id)
+    console.log(this.props.theUser)
   }
   Message_search = () => (
     <div id="message-search">
@@ -44,12 +46,12 @@ class Messages extends Component {
     </div>
   )
 
-  User_info = () => (
+  User_info = props => (
     <div className="user-info">
       <img src={require('./user.png')} alt="" />
       <div className="user-info-div">
-        <p className="user-info-name">Tony Hajdini</p>
-        <p className="user-info-email">m1lt0s@hotmail.com</p>
+        <p className="user-info-name">this.props.theUser.user.username</p>
+        <p className="user-info-email">this.props.theUser.user.email</p>
       </div>
       <div className="user-info-buttons">
         <Icon className="profile-buttons icons-btn waves-effect waves-white">more_horiz</Icon>
@@ -59,6 +61,7 @@ class Messages extends Component {
 
   Chat_Grid = () => (
     <div id="chat-grid">
+      {console.log(this.props.theUSer)}
       <this.User_info />
       <this.Message_search />
       <this.Message_credentials />
@@ -132,6 +135,9 @@ class Messages extends Component {
   )
 
   render() {
+    const { user } = this.props.theUser
+    console.log(user)
+    console.log('user')
     return (
       <div className="messages-grid">
         <this.Chat_Grid />
@@ -146,7 +152,9 @@ Messages.propTypes = {
   userTyping: PropTypes.func.isRequired,
   send_message: PropTypes.func.isRequired,
   typing: PropTypes.object.isRequired,
-  user: PropTypes.func.isRequired
+  fetchUser: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  theUser: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -154,7 +162,9 @@ const mapStateToProps = state => ({
   userTyping: state.userTyping,
   send_message: state.send,
   typing: state.userTyping,
-  user: state.user
+  fetchUser: state.fetchUser,
+  user: state.user_auth,
+  theUser: state.user
 })
 
 export default connect(
