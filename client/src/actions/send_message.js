@@ -4,10 +4,9 @@ import socketIOClient from 'socket.io-client'
 const url = 'http://localhost:8080'
 const socket = socketIOClient(url)
 
-export const send_message = values => dispatch => {
+export const send_message = values => (dispatch, props) => {
   dispatch(showLoading())
-  console.log('send Message')
-  dispatch({ type: SEND_MESSAGE, user: 'Tonyyy' })
-  socket.emit(SEND_MESSAGE, { user: 'Tony', message: values.message })
+  dispatch({ type: SEND_MESSAGE, payload: { user: 'Tony', message: `${values}` } })
+  socket.emit(SEND_MESSAGE, { user: 'Tony', message: `${values}` })
   dispatch(hideLoading())
 }

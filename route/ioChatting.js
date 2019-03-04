@@ -1,4 +1,4 @@
-exports = module.exports = function(io) {
+exports = module.exports = io => {
   io.on('connection', socket => {
     console.log('son')
   })

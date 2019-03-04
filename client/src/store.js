@@ -19,7 +19,6 @@ const store = createStore(
 )
 
 if (localStorage.token) {
-  console.log(localStorage.token)
   setAuthorizationToken(localStorage.token)
   store.dispatch(setCurrentUser(jwt.decode(localStorage.token)))
 }

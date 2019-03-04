@@ -3,12 +3,15 @@ import { Icon, MediaBox } from 'react-materialize'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loggedIn_reducer } from '../actions/ioLogin'
+
 import { userTyping } from '../actions/userTyping'
 import { send_message } from '../actions/send_message'
+import { fetchUser } from '../actions/fetchUser'
 
 class Messages extends Component {
   componentWillMount() {
-    this.props.loggedIn_reducer(this.props)
+    this.props.loggedIn_reducer()
+    this.props.user('sdfsdfsdf')
   }
   Message_search = () => (
     <div id="message-search">
@@ -19,7 +22,9 @@ class Messages extends Component {
 
   Message_credentials = () => (
     <div
-      onClick={e => console.log(e.timeStamp)}
+      onClick={e => {
+        console.log(this.props)
+      }}
       className="message_credentials profile-buttons waves-effect waves-green"
     >
       <img src={require('./hot-girls-5.jpg')} />
@@ -61,12 +66,12 @@ class Messages extends Component {
   )
 
   typing(e) {
-    this.props.userTyping(e.target.value)
-    console.log(e.target.value)
+    this.props.userTyping(e.target)
+    console.log(this.props.user)
   }
 
   sendMessage(e) {
-    this.props.send_message('hey')
+    this.props.send_message(this.props.typing.message)
   }
 
   senderMessage = () => (
@@ -86,7 +91,7 @@ class Messages extends Component {
       </Icon>
       <div className="actualMessageReceiver">
         <small>13:45</small>
-        <p>{console.log(this.props.user_auth.user)}</p>
+        <p>hey</p>
       </div>
       <img src={require('./hot-girls-5.jpg')} alt="" />
     </div>
@@ -139,16 +144,20 @@ class Messages extends Component {
 Messages.propTypes = {
   usersonline: PropTypes.func.isRequired,
   userTyping: PropTypes.func.isRequired,
-  send_message: PropTypes.func.isRequired
+  send_message: PropTypes.func.isRequired,
+  typing: PropTypes.object.isRequired,
+  user: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
   usersonline: state.loggedIn_reducer.loggedinusers,
-  UserTyping: state.userTyping,
-  send_message: state.send_message
+  userTyping: state.userTyping,
+  send_message: state.send,
+  typing: state.userTyping,
+  user: state.user
 })
 
 export default connect(
   mapStateToProps,
-  { loggedIn_reducer, userTyping, send_message }
+  { loggedIn_reducer, userTyping, send_message, fetchUser }
 )(Messages)
