@@ -15,6 +15,12 @@ export default class ChatGrid extends Component {
       usersOnline: []
     }
   }
+
+  /**
+   * Sockets for the time being
+   *
+   * @memberof ChatGrid
+   */
   componentWillMount = () => {
     this.socketConnect()
     this.fetchTheUser()
