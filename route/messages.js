@@ -17,4 +17,8 @@ router.get('/', async (req, res) => {
   res.send(messages)
 })
 
+router.get('/:userID/:messageID', (req, res) => {
+  const { userID, messageID } = req.params
+  console.log(userID, messageID)
+})
 module.exports = router

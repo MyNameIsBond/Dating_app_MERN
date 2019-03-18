@@ -8,12 +8,12 @@ import jwt from 'jsonwebtoken'
 
 const initialState = {}
 
-// const middleware = [thunk]
+const middleware = [thunk]
 const store = createStore(
   rootReducer,
   initialState,
   compose(
-    applyMiddleware(thunk, loadingBarMiddleware()),
+    applyMiddleware(...middleware, loadingBarMiddleware()),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )

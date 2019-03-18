@@ -66,6 +66,12 @@ nav > div > div > ul > li > a > li > a:hover {
   cursor: default;
 }
 
+/* General */
+input[type='text']:focus {
+  border-bottom: 0px solid !important;
+  box-shadow: none;
+}
+
 .login_style {
   background-color: var(--nav-bg-color);
   box-shadow: var(--box-shadow);
@@ -334,7 +340,7 @@ nav > div > div > ul > li > a > li > a:hover {
 
   margin: 25px 25px 25px 14px;
   width: 80%;
-  border: solid var(--lightgray-border) 1px;
+  border: solid 1px var(--lightgray-border);
   border-radius: 20px;
 }
 #message-search i {
@@ -346,6 +352,31 @@ nav > div > div > ul > li > a > li > a:hover {
 
 .ms_user img {
   height: 40px;
+}
+
+/* tabs on the online - chatted users */
+
+.chatTabsDiv {
+  grid-column: span 3;
+  color: var(--text-color) !important;
+}
+.chatTabs {
+  background-color: var(--nav-bg-color);
+}
+.tabs .tab a:hover,
+.tabs .tab a.active {
+  color: var(--text-color);
+}
+.tabs .tab a:hover,
+.tabs .tab a {
+  color: var(--text-color);
+}
+.tabs .indicator {
+  height: 1px;
+  background-color: var(--decoration-color);
+}
+.tab {
+  padding: 0px auto !important;
 }
 
 /* User Info on the chat-grid */

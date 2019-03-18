@@ -1,5 +1,5 @@
 import { FETCH_USER } from '../actions/types'
-const initialState = {}
+const initialState = { user: {} }
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case FETCH_USER:

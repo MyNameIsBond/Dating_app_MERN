@@ -7,61 +7,17 @@ import { loggedIn_reducer } from '../actions/ioLogin'
 import { userTyping } from '../actions/userTyping'
 import { send_message } from '../actions/send_message'
 import { fetchUser } from '../actions/fetchUser'
+import ChatGrid from './chattingSystem/ChatGrid.jsx'
 
 class Messages extends Component {
-  async componentWillMount() {
+  componentWillMount() {
     const { user } = this.props.user
+    this.props.fetchUser(user.id)
     this.props.loggedIn_reducer()
-    await this.props.fetchUser(user.id)
-    console.log(this.props.theUser)
   }
-  Message_search = () => (
-    <div id="message-search">
-      <input type="text" placeholder="Search your matches" />
-      <Icon>search</Icon>
-    </div>
-  )
-
-  Message_credentials = () => (
-    <div
-      onClick={e => {
-        console.log(this.props)
-      }}
-      className="message_credentials profile-buttons waves-effect waves-green"
-    >
-      <img src={require('./hot-girls-5.jpg')} />
-      <div className="mc_info">
-        <p className="mc_name">Dolores </p>
-        <p className="mc_message">
-          <Icon>done_all</Icon>
-          Hey cutie
-        </p>
-      </div>
-      <div className="mc_options">
-        <small>3 mins ago</small>
-        <Icon className="profile-buttons icons-btn waves-effect waves-white">
-          keyboard_arrow_down
-        </Icon>
-      </div>
-    </div>
-  )
-
-  User_info = props => (
-    <div className="user-info">
-      <img src={require('./user.png')} alt="" />
-      <div className="user-info-div">
-        <p className="user-info-name">this.props.theUser.user.username</p>
-        <p className="user-info-email">this.props.theUser.user.email</p>
-      </div>
-      <div className="user-info-buttons">
-        <Icon className="profile-buttons icons-btn waves-effect waves-white">more_horiz</Icon>
-      </div>
-    </div>
-  )
 
   Chat_Grid = () => (
     <div id="chat-grid">
-      {console.log(this.props.theUSer)}
       <this.User_info />
       <this.Message_search />
       <this.Message_credentials />
@@ -135,12 +91,9 @@ class Messages extends Component {
   )
 
   render() {
-    const { user } = this.props.theUser
-    console.log(user)
-    console.log('user')
     return (
       <div className="messages-grid">
-        <this.Chat_Grid />
+        <ChatGrid user={this.props.user} />
         <this.Message_fiels />
         <this.Message_infos />
       </div>
@@ -154,7 +107,7 @@ Messages.propTypes = {
   typing: PropTypes.object.isRequired,
   fetchUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  theUser: PropTypes.object.isRequired
+  theUser: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
