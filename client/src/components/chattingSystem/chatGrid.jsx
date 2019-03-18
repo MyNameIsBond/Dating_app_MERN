@@ -1,20 +1,50 @@
+// import { fetchUser } from '../../actions/fetchUser'
+// import { assertContinueStatement } from 'babel-types'
 import React, { Component } from 'react'
 import { Icon, Tabs, Tab } from 'react-materialize'
-import { fetchUser } from '../../actions/fetchUser'
 import axios from 'axios'
-import { assertContinueStatement } from 'babel-types'
+import socketIOClient from 'socket.io-client'
+
+const url = 'http://localhost:8080'
+const socket = socketIOClient(url)
 export default class ChatGrid extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: []
+      user: [],
+      usersOnline: []
     }
   }
   componentWillMount = () => {
+    this.socketConnect()
     this.fetchTheUser()
-    console.log('userid')
   }
 
+  socketConnect = () => {
+    const userP = this.props.user.user.id
+    const { user } = this.state
+    socket.on('connection', socket => {
+      socket.emit('connection', { socket: socket.id, userID: userP, username: user.username })
+    })
+  }
+
+  /**
+   * Socket on useronline
+   * Socket on send message
+   * Socket on recieve
+   * Socket on Typing
+   *
+   * @memberof ChatGrid
+   */
+  componentDidMount = () => {
+    console.log('asd')
+  }
+
+  /**
+   * will display the online users
+   * using sockets / Mongo
+   * @memberof ChatGrid
+   */
   OnelineUser = () => (
     <div
       onClick={this.fetchMessages}
@@ -41,7 +71,7 @@ export default class ChatGrid extends Component {
     return (
       <div className="chatTabsDiv">
         <Tabs className="tab-demo chatTabs">
-          <Tab title="Online">
+          <Tab title="Online Now">
             <this.OnelineUser />
           </Tab>
 
@@ -61,7 +91,9 @@ export default class ChatGrid extends Component {
     try {
       const { user } = this.props.user
       const messages = await axios.get(`messages/${user.id}`)
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   fetchTheUser = async () => {

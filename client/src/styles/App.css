@@ -375,8 +375,10 @@ input[type='text']:focus {
   height: 1px;
   background-color: var(--decoration-color);
 }
-.tab {
-  padding: 0px auto !important;
+
+.row .col {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 /* User Info on the chat-grid */
