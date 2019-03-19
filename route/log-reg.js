@@ -31,7 +31,7 @@ passport.use(
 
 router.post('/register', async (req, res) => {
   req.body = req.body.values
-  const { email, password, password2, username, gender } = req.body
+  const { email, password, username, gender } = req.body
   let user = new User()
   user.username = username
   user.email = email

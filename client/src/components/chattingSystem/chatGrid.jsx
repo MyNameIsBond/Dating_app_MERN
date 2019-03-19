@@ -21,17 +21,16 @@ export default class ChatGrid extends Component {
    *
    * @memberof ChatGrid
    */
-  componentWillMount = () => {
+  componentWillMount = async () => {
+    await this.fetchTheUser()
     this.socketConnect()
-    this.fetchTheUser()
   }
 
   socketConnect = () => {
     const userP = this.props.user.user.id
     const { user } = this.state
-    socket.on('connection', socket => {
-      socket.emit('connection', { socket: socket.id, userID: userP, username: user.username })
-    })
+    console.log(user)
+    socket.emit('connection', { username: user.username, userID: userP, socketID: socket.id })
   }
 
   /**
@@ -51,7 +50,7 @@ export default class ChatGrid extends Component {
    * using sockets / Mongo
    * @memberof ChatGrid
    */
-  OnelineUser = () => (
+  OnlineUser = () => (
     <div
       onClick={this.fetchMessages}
       className="message_credentials profile-buttons waves-effect waves-green"
@@ -78,7 +77,7 @@ export default class ChatGrid extends Component {
       <div className="chatTabsDiv">
         <Tabs className="tab-demo chatTabs">
           <Tab title="Online Now">
-            <this.OnelineUser />
+            <this.OnlineUser />
           </Tab>
 
           <Tab title="Chat" active>

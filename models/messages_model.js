@@ -14,5 +14,3 @@ const Chat_Message = mongoose.Schema({
 })
 
 let Chat = (module.exports = mongoose.model('Chat', Chat_Message))
-
-// Ideal

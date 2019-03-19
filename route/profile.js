@@ -7,7 +7,6 @@ router.get('/:userID', async (req, res) => {
   const { userID } = req.params
   const user = await User.findById(userID)
   const { username, email } = user
-  console.log({ username, email })
   res.send({ username, email })
 })
 

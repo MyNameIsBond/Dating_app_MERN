@@ -12,6 +12,7 @@ const blog = require('./route/blog')
 const mongoose = require('mongoose')
 const User = require('./models/User')
 const Chat = require('./models/messages_model')
+const UsersOnline = require('./models/UsersOnline')
 const db = mongoose.connection
 mongoose.connect('mongodb://localhost/user')
 
@@ -56,6 +57,11 @@ app.get('/users', async (req, res) => {
   const users = await User.find({})
   // the Logged in User. req.user
   const req_user = req.user
+  return res.send(users)
+})
+
+app.get('/s', async (req, res) => {
+  const users = await UsersOnline.find({})
   return res.send(users)
 })
 
